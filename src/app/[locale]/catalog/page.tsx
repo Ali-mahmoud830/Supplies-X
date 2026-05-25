@@ -1,15 +1,21 @@
+export const dynamic = 'force-dynamic';
+
 import { Navbar } from '@/components/Navbar';
 import prisma from '@/lib/prisma';
 import CatalogClient from './CatalogClient';
 
 export default async function CatalogPage() {
-  const products = await prisma.product.findMany({
-    include: { category: true },
-    orderBy: { createdAt: 'desc' }
-  });
-  const categories = await prisma.category.findMany({
-    orderBy: { name_en: 'asc' }
-  });
+  let products: any[] = [];
+  let categories: any[] = [];
+
+  try {
+    [products, categories] = await Promise.all([
+      prisma.product.findMany({ include: { category: true }, orderBy: { createdAt: 'desc' } }),
+      prisma.category.findMany({ orderBy: { name_en: 'asc' } }),
+    ]);
+  } catch (error) {
+    console.error('Catalog: DB fetch failed, rendering empty state:', error);
+  }
 
   return (
     <div className="min-h-screen bg-slate-950 text-white flex flex-col">

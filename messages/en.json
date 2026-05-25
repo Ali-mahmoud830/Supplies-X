@@ -2,5 +2,18 @@
   "HomePage": {
     "title": "B2B General Supplies Platform",
     "description": "Your trusted partner for industrial tools and safety equipment."
+  },
+  "AdminSidebar": {
+    "dashboard": "Overview",
+    "categories": "Categories",
+    "products": "Products",
+    "rfqs": "RFQs Pipeline"
+  },
+  "Admin": {
+    "Overview": {
+      "totalProducts": "Total Products",
+      "pendingRfqs": "Pending RFQs",
+      "completedRfqs": "Completed Orders"
+    }
   }
 }

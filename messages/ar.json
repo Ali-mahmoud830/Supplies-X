@@ -2,5 +2,18 @@
   "HomePage": {
     "title": "منصة توريد المعدات العامة B2B",
     "description": "شريكك الموثوق للأدوات الصناعية ومعدات السلامة."
+  },
+  "AdminSidebar": {
+    "dashboard": "نظرة عامة",
+    "categories": "الفئات",
+    "products": "المنتجات",
+    "rfqs": "طلبات عروض الأسعار"
+  },
+  "Admin": {
+    "Overview": {
+      "totalProducts": "إجمالي المنتجات",
+      "pendingRfqs": "الطلبات المعلقة",
+      "completedRfqs": "الطلبات المكتملة"
+    }
   }
 }

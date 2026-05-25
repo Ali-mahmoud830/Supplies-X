@@ -28,15 +28,15 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="bg-slate-950/80 backdrop-blur-md border-b border-white/5 sticky top-0 z-50">
+    <nav className="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-blue-600/30 group-hover:shadow-blue-500/40 transition-shadow">
+            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-sm shadow-md">
               BX
             </div>
-            <span className="font-bold text-xl text-white tracking-tight">Supplies <span className="text-blue-400">X</span></span>
+            <span className="font-bold text-xl text-slate-900 tracking-tight">Supplies <span className="text-blue-600">X</span></span>
           </Link>
 
           {/* Desktop nav */}
@@ -45,7 +45,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-slate-400 hover:text-white font-medium text-sm transition-colors"
+                className="text-slate-600 hover:text-blue-600 font-medium text-sm transition-colors"
               >
                 {link.label}
               </Link>
@@ -56,23 +56,23 @@ export function Navbar() {
           <div className="flex items-center gap-3">
             {/* Language Switcher */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-400 hover:text-white transition-all text-sm">
+              <DropdownMenuTrigger className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 hover:text-slate-900 transition-all text-sm font-medium">
                 <Globe className="h-4 w-4" />
-                <span className="uppercase font-medium">{locale}</span>
+                <span className="uppercase">{locale}</span>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-slate-900 border-white/10 text-white">
-                <DropdownMenuItem onClick={() => switchLanguage('en')} className="hover:bg-white/5 cursor-pointer">English</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => switchLanguage('ar')} className="hover:bg-white/5 cursor-pointer">العربية</DropdownMenuItem>
+              <DropdownMenuContent align="end" className="bg-white border-slate-200 text-slate-900">
+                <DropdownMenuItem onClick={() => switchLanguage('en')} className="hover:bg-slate-50 cursor-pointer">English</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => switchLanguage('ar')} className="hover:bg-slate-50 cursor-pointer">العربية</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
             {/* Quote Cart */}
             <Link href="/cart">
-              <button className="relative flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg font-medium text-sm transition-all hover:shadow-lg hover:shadow-blue-500/25">
+              <button className="relative flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium text-sm transition-all shadow-sm">
                 <ShoppingCart className="h-4 w-4" />
                 <span className="hidden sm:inline">{t('quoteList')}</span>
                 {totalItems > 0 && (
-                  <span className="absolute -top-1.5 -right-1.5 bg-emerald-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold shadow">
+                  <span className="absolute -top-2 -right-2 bg-rose-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold shadow-sm">
                     {totalItems}
                   </span>
                 )}
@@ -80,7 +80,7 @@ export function Navbar() {
             </Link>
 
             {/* Mobile menu toggle */}
-            <button className="md:hidden p-2 rounded-lg bg-white/5 text-slate-400 hover:text-white" onClick={() => setMobileOpen(!mobileOpen)}>
+            <button className="md:hidden p-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-600 hover:text-slate-900" onClick={() => setMobileOpen(!mobileOpen)}>
               {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
@@ -88,12 +88,12 @@ export function Navbar() {
 
         {/* Mobile nav */}
         {mobileOpen && (
-          <div className="md:hidden py-4 border-t border-white/5 space-y-2">
+          <div className="md:hidden py-4 border-t border-slate-100 space-y-2 bg-white">
             {navLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-4 py-2 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-all"
+                className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-all font-medium"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}

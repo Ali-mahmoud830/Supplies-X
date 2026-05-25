@@ -37,7 +37,7 @@ export function Navbar() {
 
           <div className="flex items-center gap-4">
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
+              <DropdownMenuTrigger>
                 <Button variant="ghost" size="icon">
                   <Globe className="h-5 w-5 text-gray-700" />
                 </Button>

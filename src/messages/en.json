@@ -1,7 +1,29 @@
 {
   "HomePage": {
     "title": "Premium B2B General Supplies Platform",
-    "description": "Your trusted enterprise partner for certified industrial tools, safety gear, and corporate procurement contracts."
+    "description": "Your trusted enterprise partner for certified industrial tools, safety gear, and corporate procurement contracts.",
+    "browse": "Browse Catalog",
+    "request": "Request a Quote",
+    "trusted": "Trusted B2B Procurement Partner",
+    "stats": {
+      "products": "Products",
+      "brands": "Brands",
+      "countries": "Countries",
+      "support": "Support"
+    },
+    "featuresTitle": "Why Choose Supplies X?",
+    "featuresSubtitle": "Built for enterprise procurement teams that demand reliability, speed, and quality.",
+    "feature1Title": "Certified Quality",
+    "feature1Desc": "ISO 9001:2015 certified products across all categories.",
+    "feature2Title": "Global Sourcing",
+    "feature2Desc": "Direct partnerships with 200+ trusted global manufacturers.",
+    "feature3Title": "Fast Turnaround",
+    "feature3Desc": "Dedicated procurement team with 24hr quote guarantee.",
+    "complianceTitle": "Globally Certified Standards",
+    "complianceDesc": "All products are sourced and verified against international compliance benchmarks.",
+    "complianceBadge": "Compliance & Certifications",
+    "downloadProfile": "Download Company Profile PDF",
+    "footerRights": "Supplies X. All rights reserved."
   },
   "Navbar": {
     "home": "Home",
@@ -23,9 +45,52 @@
   },
   "Catalog": {
     "title": "Enterprise Product Catalog",
+    "subtitle": "Browse our full range of industrial and B2B supply products.",
     "search": "Search products, brands...",
     "filters": "Filter Specifications",
     "all": "All Categories",
-    "empty": "No products found matching your filters."
+    "empty": "No products found matching your filters.",
+    "emptySub": "Try adjusting your search or filters.",
+    "showing": "Showing",
+    "of": "of",
+    "products": "products",
+    "view": "View"
+  },
+  "Product": {
+    "noImage": "No Image Available",
+    "quantity": "Quantity:",
+    "addToQuote": "Add to Quote List",
+    "techSpecs": "Technical Specifications",
+    "share": "Share with Procurement Team",
+    "print": "Print Technical Spec Sheet",
+    "linkCopied": "Link copied to clipboard!"
+  },
+  "Cart": {
+    "emptyTitle": "Your Quote List is empty",
+    "emptySub": "Browse our catalog to add items.",
+    "browse": "Browse Catalog",
+    "selected": "Selected Items",
+    "product": "Product",
+    "quantity": "Quantity",
+    "remove": "Remove",
+    "details": "Corporate Details",
+    "name": "Full Name *",
+    "company": "Company Name",
+    "email": "Email Address *",
+    "phone": "Phone Number *",
+    "fileLabel": "Procurement List / Excel Link (Optional)",
+    "submit": "Submit Request For Quote",
+    "submitting": "Submitting RFQ...",
+    "disclaimer": "Our sales team will contact you within 24 hours with a personalized quote.",
+    "success": "Your RFQ has been successfully submitted! We will contact you shortly.",
+    "error": "Something went wrong. Please try again.",
+    "bulkPadTitle": "B2B Scratch Pad (Bulk Add)",
+    "bulkPadDesc": "Paste Product IDs, SKUs, or exact Titles (one per line) to instantly add them to your quote list.",
+    "bulkPadPlaceholder": "e.g. Industrial Safety Helmet\nSteel Bolt 5mm",
+    "bulkPadBtn": "Add Bulk Items",
+    "dropzoneTitle": "Upload Procurement Sheet",
+    "dropzoneDesc": "Drag and drop your Excel/PDF or click to browse",
+    "dropzoneMock": "Uploading file...",
+    "dropzoneSuccess": "File uploaded successfully"
   }
 }

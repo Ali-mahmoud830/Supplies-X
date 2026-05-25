@@ -156,3 +156,28 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(71 85 105);
 }
+
+/* Print Styles for Technical Specifications */
+@media print {
+  /* Hide Navbar, Footer, and other interactive non-content UI */
+  nav, footer, button {
+    display: none !important;
+  }
+  
+  /* Ensure background and colors are print friendly */
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  
+  .print-specs {
+    break-inside: avoid;
+    margin-top: 2rem !important;
+  }
+  
+  /* Remove shadows and glowing borders for print */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}

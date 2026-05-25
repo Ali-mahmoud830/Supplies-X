@@ -1,13 +1,31 @@
 {
+  "HomePage": {
+    "title": "Premium B2B General Supplies Platform",
+    "description": "Your trusted enterprise partner for certified industrial tools, safety gear, and corporate procurement contracts."
+  },
   "Navbar": {
-    "title": "Supplies-X",
     "home": "Home",
     "catalog": "Catalog",
-    "cart": "Quote List",
-    "admin": "Admin"
+    "quoteList": "Quote List"
   },
-  "Hero": {
-    "title": "Premium General Supplies Platform",
-    "subtitle": "Your trusted B2B partner for industrial tools, safety gear, and corporate procurement."
+  "AdminSidebar": {
+    "dashboard": "Overview",
+    "categories": "Categories",
+    "products": "Products",
+    "rfqs": "RFQs Pipeline"
+  },
+  "Admin": {
+    "Overview": {
+      "totalProducts": "Total Products",
+      "pendingRfqs": "Pending RFQs",
+      "completedRfqs": "Completed Orders"
+    }
+  },
+  "Catalog": {
+    "title": "Enterprise Product Catalog",
+    "search": "Search products, brands...",
+    "filters": "Filter Specifications",
+    "all": "All Categories",
+    "empty": "No products found matching your filters."
   }
 }

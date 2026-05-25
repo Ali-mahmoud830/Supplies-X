@@ -3,6 +3,12 @@
     "title": "B2B General Supplies Platform",
     "description": "Your trusted partner for industrial tools and safety equipment."
   },
+  "Navbar": {
+    "home": "Home",
+    "catalog": "Catalog",
+    "about": "About Us",
+    "quoteList": "Quote List"
+  },
   "AdminSidebar": {
     "dashboard": "Overview",
     "categories": "Categories",

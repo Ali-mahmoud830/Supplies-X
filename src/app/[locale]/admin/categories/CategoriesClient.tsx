@@ -70,7 +70,7 @@ export default function CategoriesClient({ initialData }: { initialData: Categor
     <div>
       <div className="flex justify-end mb-4">
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
-          <DialogTrigger asChild>
+          <DialogTrigger>
             <Button>Add Category</Button>
           </DialogTrigger>
           <DialogContent>

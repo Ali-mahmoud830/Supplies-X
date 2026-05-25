@@ -68,7 +68,7 @@ export default function ProductsClient({ initialData, categories }: { initialDat
     <div>
       <div className="flex justify-end mb-4">
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
-          <DialogTrigger asChild>
+          <DialogTrigger>
             <Button>Add Product</Button>
           </DialogTrigger>
           <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">

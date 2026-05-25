@@ -78,7 +78,7 @@ export default function RfqsClient({ initialData }: { initialData: RFQ[] }) {
               </TableCell>
               <TableCell className="text-right">
                 <Dialog>
-                  <DialogTrigger asChild>
+                  <DialogTrigger>
                     <Button variant="outline" size="sm">View Items</Button>
                   </DialogTrigger>
                   <DialogContent>

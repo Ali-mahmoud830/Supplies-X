@@ -1,0 +1,13 @@
+{
+  "Navbar": {
+    "title": "Supplies-X",
+    "home": "Home",
+    "catalog": "Catalog",
+    "cart": "Quote List",
+    "admin": "Admin"
+  },
+  "Hero": {
+    "title": "Premium General Supplies Platform",
+    "subtitle": "Your trusted B2B partner for industrial tools, safety gear, and corporate procurement."
+  }
+}

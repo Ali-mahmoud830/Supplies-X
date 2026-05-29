@@ -17,12 +17,12 @@ export function WhatsAppFAB() {
       href={url}
       target="_blank"
       rel="noreferrer"
-      className="fixed bottom-6 end-6 md:bottom-8 md:end-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-2xl hover:scale-110 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group"
+      className="fixed bottom-6 end-6 md:bottom-8 md:end-8 z-50 bg-[#25D366] text-white px-6 py-4 rounded-full shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group"
       aria-label="Contact us on WhatsApp"
     >
-      <MessageCircle className="h-7 w-7" />
-      <span className="absolute end-full me-4 bg-white text-slate-800 text-sm font-semibold px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap hidden md:block">
-        {locale === 'ar' ? 'تواصل معنا' : 'Chat with Sales'}
+      <MessageCircle className="h-6 w-6" />
+      <span className="font-semibold text-sm md:text-base tracking-wide hidden sm:block">
+        {locale === 'ar' ? '💬 تحدث مع أخصائي المشتريات' : '💬 Talk to a B2B Procurement Specialist'}
       </span>
     </a>
   );

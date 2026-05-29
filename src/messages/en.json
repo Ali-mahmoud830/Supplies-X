@@ -88,6 +88,19 @@
     "print": "Print Technical Spec Sheet",
     "linkCopied": "Link copied to clipboard!"
   },
+  "Footer": {
+    "brandDesc": "Your trusted enterprise partner for certified industrial tools, safety gear, and corporate procurement contracts.",
+    "quickLinks": "Quick Links",
+    "catalog": "Product Catalog",
+    "requestQuote": "Request a Quote",
+    "aboutUs": "About Us",
+    "compliance": "Compliance & Quality",
+    "corporateInfo": "Corporate Info",
+    "contactUs": "Head Office",
+    "allRightsReserved": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
   "Cart": {
     "emptyTitle": "Your Quote List is empty",
     "emptySub": "Browse our catalog to add items.",

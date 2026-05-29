@@ -14,7 +14,7 @@ export default async function HomePage() {
       
       <main className="flex-1 relative z-10 flex flex-col">
         {/* COMPREHENSIVE HERO SECTION RECONSTRUCTION (The 60/40 Split Grid) */}
-        <div className="w-full bg-gradient-to-br from-slate-50 via-white to-blue-50/30 border-b border-slate-100 relative overflow-hidden">
+        <div className="w-full bg-slate-50 border-b border-slate-100 relative overflow-hidden">
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -22,13 +22,13 @@ export default async function HomePage() {
               {/* Column 1 (Left Side - 6 cols) */}
               <div className="lg:col-span-6 space-y-8">
                 <div className="inline-flex items-center rounded-full border border-slate-200 bg-white/80 backdrop-blur-sm px-4 py-1.5 text-sm font-semibold text-slate-700 shadow-sm">
-                  <ShieldCheck className="me-2 h-4 w-4 text-blue-600" />
+                  <ShieldCheck className="me-2 h-4 w-4 text-amber-500" />
                   {t('trusted')}
                 </div>
                 
-                <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-none">
+                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-none">
                   {t('title').split('B2B')[0]}
-                  <span className="text-indigo-900 block sm:inline mt-2 sm:mt-0">B2B </span>
+                  <span className="text-amber-500 block sm:inline mt-2 sm:mt-0">B2B </span>
                   {t('title').split('B2B')[1]}
                 </h1>
                 
@@ -38,12 +38,12 @@ export default async function HomePage() {
                 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <Link href="/catalog">
-                    <Button size="lg" className="w-full sm:w-auto h-14 px-8 bg-blue-600 hover:bg-blue-700 text-white font-medium shadow-lg shadow-blue-500/10 transition-all duration-300 hover:shadow-blue-500/20 hover:scale-[1.02]">
+                    <Button size="lg" className="w-full sm:w-auto h-14 px-8 bg-slate-900 hover:bg-slate-800 text-white font-medium shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
                       {t('browse')} <ArrowRight className="ms-2 h-5 w-5" />
                     </Button>
                   </Link>
                   <Link href="/cart">
-                    <Button size="lg" variant="outline" className="w-full sm:w-auto h-14 px-8 border border-slate-200 hover:bg-slate-50 text-slate-900 font-bold bg-white transition-all duration-300 hover:shadow-md hover:scale-[1.02]">
+                    <Button size="lg" variant="outline" className="w-full sm:w-auto h-14 px-8 border border-slate-300 hover:bg-slate-100 text-slate-900 font-bold bg-white transition-all duration-300 hover:shadow-md hover:scale-[1.02]">
                       {t('request')}
                     </Button>
                   </Link>
@@ -51,27 +51,36 @@ export default async function HomePage() {
               </div>
               
               {/* Column 2 (Right Side - 6 cols) Heavy Industrial Imagery */}
-              <div className="lg:col-span-6 relative lg:ms-8 mt-12 lg:mt-0 h-[400px] sm:h-[500px]">
-                {/* Floating Badge */}
-                <div className="absolute -top-6 right-0 lg:-right-6 z-30 bg-white/95 backdrop-blur-md border border-slate-100 shadow-2xl rounded-2xl p-4 flex items-center gap-3 hover:-translate-y-1 transition-transform duration-300">
-                  <div className="w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center text-indigo-700">
-                    <Truck className="h-6 w-6" />
+              <div className="lg:col-span-6 relative lg:ms-8 mt-12 lg:mt-0 h-[300px] sm:h-[500px]">
+                {/* Floating Badge (Visible on all sizes, adjusted for mobile) */}
+                <div className="absolute -top-6 right-2 sm:right-0 lg:-right-6 z-30 bg-white/95 backdrop-blur-md border border-slate-100 shadow-2xl rounded-2xl p-3 sm:p-4 flex items-center gap-3 hover:-translate-y-1 transition-transform duration-300">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-amber-50 rounded-full flex items-center justify-center text-amber-600">
+                    <Truck className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
                   <div>
                     <p className="text-[10px] sm:text-xs text-slate-500 font-bold uppercase tracking-widest">{t('deliveryBadgeSub', { defaultMessage: 'Logistics' })}</p>
-                    <p className="text-sm sm:text-base font-extrabold text-slate-900">{t('deliveryBadgeTitle', { defaultMessage: 'Next-Day Factory Delivery' })}</p>
+                    <p className="text-xs sm:text-base font-extrabold text-slate-900">{t('deliveryBadgeTitle', { defaultMessage: 'Next-Day Factory Delivery' })}</p>
                   </div>
                 </div>
 
-                {/* Base Image */}
-                <div className="absolute inset-0 right-8 bottom-8 sm:right-12 sm:bottom-12 bg-slate-200 rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-10 group">
+                {/* MOBILE ONLY: Single Full-Width Banner */}
+                <div className="block md:hidden absolute inset-0 bg-slate-200 rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-10 group">
                   <img src="https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?q=80&w=1200&auto=format&fit=crop" alt="Industrial Warehouse" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-indigo-900/10 mix-blend-multiply"></div>
+                  <div className="absolute inset-0 bg-slate-900/10 mix-blend-multiply"></div>
                 </div>
 
-                {/* Overlay Image */}
-                <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 w-2/3 h-2/3 bg-slate-200 rounded-3xl overflow-hidden shadow-2xl border-8 border-white z-20 group">
-                  <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop" alt="Premium Safety Gear" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                {/* DESKTOP ONLY: Overlapping Composition */}
+                <div className="hidden md:block">
+                  {/* Base Image */}
+                  <div className="absolute inset-0 right-12 bottom-12 bg-slate-200 rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-10 group">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?q=80&w=1200&auto=format&fit=crop" alt="Industrial Warehouse" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-slate-900/10 mix-blend-multiply"></div>
+                  </div>
+
+                  {/* Overlay Image */}
+                  <div className="absolute -bottom-6 -left-6 w-2/3 h-2/3 bg-slate-200 rounded-3xl overflow-hidden shadow-2xl border-8 border-white z-20 group">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop" alt="Premium Safety Gear" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -103,7 +112,7 @@ export default async function HomePage() {
         </div>
 
         {/* COMPREHENSIVE SERVICES SECTION */}
-        <div className="w-full bg-white py-24 border-b border-slate-100">
+        <div className="w-full bg-white py-16 md:py-28 border-b border-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">{t('servicesTitle', { defaultMessage: 'Comprehensive Supply Solutions' })}</h2>
@@ -114,9 +123,9 @@ export default async function HomePage() {
               {/* Service 1 */}
               <div className="group bg-white rounded-2xl border border-slate-200 p-8 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-150 transition-transform duration-700">
-                  <Settings className="h-32 w-32 text-blue-600" />
+                  <Settings className="h-32 w-32 text-amber-500" />
                 </div>
-                <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                <div className="w-14 h-14 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-6 border border-amber-100 group-hover:bg-slate-900 group-hover:text-white transition-colors">
                   <Settings className="h-7 w-7" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3 relative z-10">{t('srv1Title', { defaultMessage: 'MRO Supply Chain Management' })}</h3>
@@ -128,9 +137,9 @@ export default async function HomePage() {
               {/* Service 2 */}
               <div className="group bg-white rounded-2xl border border-slate-200 p-8 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-150 transition-transform duration-700">
-                  <ShieldAlert className="h-32 w-32 text-blue-600" />
+                  <ShieldAlert className="h-32 w-32 text-amber-500" />
                 </div>
-                <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                <div className="w-14 h-14 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-6 border border-amber-100 group-hover:bg-slate-900 group-hover:text-white transition-colors">
                   <ShieldAlert className="h-7 w-7" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3 relative z-10">{t('srv2Title', { defaultMessage: 'PPE & Occupational Safety Compliance' })}</h3>
@@ -142,9 +151,9 @@ export default async function HomePage() {
               {/* Service 3 */}
               <div className="group bg-white rounded-2xl border border-slate-200 p-8 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-150 transition-transform duration-700">
-                  <Briefcase className="h-32 w-32 text-blue-600" />
+                  <Briefcase className="h-32 w-32 text-amber-500" />
                 </div>
-                <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                <div className="w-14 h-14 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-6 border border-amber-100 group-hover:bg-slate-900 group-hover:text-white transition-colors">
                   <Briefcase className="h-7 w-7" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3 relative z-10">{t('srv3Title', { defaultMessage: 'Bulk Corporate Procurement Contracts' })}</h3>
@@ -157,13 +166,13 @@ export default async function HomePage() {
         </div>
 
         {/* PORTFOLIO & PROJECT SUCCESS SECTION */}
-        <div className="w-full bg-slate-900 text-white py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(37,99,235,0.15),rgba(255,255,255,0))]"></div>
+        <div className="w-full bg-slate-900 text-white py-16 md:py-28 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(245,158,11,0.10),rgba(255,255,255,0))]"></div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
               <div className="max-w-2xl">
-                <span className="text-blue-400 font-bold tracking-wider uppercase text-sm mb-2 block">{t('portBadge', { defaultMessage: 'Institutional Trust' })}</span>
+                <span className="text-amber-500 font-bold tracking-wider uppercase text-sm mb-2 block">{t('portBadge', { defaultMessage: 'Institutional Trust' })}</span>
                 <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">{t('portTitle', { defaultMessage: 'Corporate Project Fulfillment' })}</h2>
               </div>
               <p className="text-slate-400 font-medium max-w-sm md:text-right">
@@ -174,10 +183,10 @@ export default async function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Project 1 */}
               <div className="bg-slate-800/50 backdrop-blur border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-800 transition-colors group">
-                <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center mb-6 border border-blue-500/20 group-hover:border-blue-400 transition-colors">
-                  <Building2 className="h-6 w-6 text-blue-400" />
+                <div className="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center mb-6 border border-amber-500/20 group-hover:border-amber-400 transition-colors">
+                  <Building2 className="h-6 w-6 text-amber-500" />
                 </div>
-                <div className="flex items-center gap-1.5 mb-2 text-blue-400">
+                <div className="flex items-center gap-1.5 mb-2 text-amber-500">
                   <MapPin className="h-4 w-4" />
                   <span className="text-xs font-bold uppercase tracking-wider">{t('prj1Loc', { defaultMessage: 'New Administrative Capital' })}</span>
                 </div>
@@ -185,17 +194,17 @@ export default async function HomePage() {
                 <p className="text-slate-400 leading-relaxed font-medium mb-6">
                   {t('prj1Desc', { defaultMessage: 'Successfully supplied 15,000+ units of certified safety gear and structural tools to Tier-1 construction contractors.' })}
                 </p>
-                <div className="flex items-center text-sm font-bold text-blue-400 group-hover:text-blue-300 transition-colors">
+                <div className="flex items-center text-sm font-bold text-amber-500 group-hover:text-amber-400 transition-colors">
                   {t('viewCase', { defaultMessage: 'View Case Study' })} <ArrowRight className="ms-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </div>
               
               {/* Project 2 */}
               <div className="bg-slate-800/50 backdrop-blur border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-800 transition-colors group">
-                <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center mb-6 border border-blue-500/20 group-hover:border-blue-400 transition-colors">
-                  <Settings className="h-6 w-6 text-blue-400" />
+                <div className="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center mb-6 border border-amber-500/20 group-hover:border-amber-400 transition-colors">
+                  <Settings className="h-6 w-6 text-amber-500" />
                 </div>
-                <div className="flex items-center gap-1.5 mb-2 text-blue-400">
+                <div className="flex items-center gap-1.5 mb-2 text-amber-500">
                   <MapPin className="h-4 w-4" />
                   <span className="text-xs font-bold uppercase tracking-wider">{t('prj2Loc', { defaultMessage: '6th of October City' })}</span>
                 </div>
@@ -203,17 +212,17 @@ export default async function HomePage() {
                 <p className="text-slate-400 leading-relaxed font-medium mb-6">
                   {t('prj2Desc', { defaultMessage: 'Configured a full MRO spare-parts supply chain pipeline for a leading food production facility, reducing downtime by 22%.' })}
                 </p>
-                <div className="flex items-center text-sm font-bold text-blue-400 group-hover:text-blue-300 transition-colors">
+                <div className="flex items-center text-sm font-bold text-amber-500 group-hover:text-amber-400 transition-colors">
                   {t('viewCase', { defaultMessage: 'View Case Study' })} <ArrowRight className="ms-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </div>
               
               {/* Project 3 */}
               <div className="bg-slate-800/50 backdrop-blur border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-800 transition-colors group">
-                <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center mb-6 border border-blue-500/20 group-hover:border-blue-400 transition-colors">
-                  <Anchor className="h-6 w-6 text-blue-400" />
+                <div className="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center mb-6 border border-amber-500/20 group-hover:border-amber-400 transition-colors">
+                  <Anchor className="h-6 w-6 text-amber-500" />
                 </div>
-                <div className="flex items-center gap-1.5 mb-2 text-blue-400">
+                <div className="flex items-center gap-1.5 mb-2 text-amber-500">
                   <MapPin className="h-4 w-4" />
                   <span className="text-xs font-bold uppercase tracking-wider">{t('prj3Loc', { defaultMessage: 'Alexandria' })}</span>
                 </div>
@@ -221,20 +230,20 @@ export default async function HomePage() {
                 <p className="text-slate-400 leading-relaxed font-medium mb-6">
                   {t('prj3Desc', { defaultMessage: 'Delivered heavy-duty electrical and marine-grade wiring components under strict maritime safety compliance.' })}
                 </p>
-                <div className="flex items-center text-sm font-bold text-blue-400 group-hover:text-blue-300 transition-colors">
+                <div className="flex items-center text-sm font-bold text-amber-500 group-hover:text-amber-400 transition-colors">
                   {t('viewCase', { defaultMessage: 'View Case Study' })} <ArrowRight className="ms-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="bg-slate-50 py-20 flex-1">
+        <div className="bg-slate-50 py-16 md:py-28 flex-1">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
               
               <div className="lg:w-1/3">
                 <div className="inline-flex items-center rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-slate-700 mb-6 border border-slate-200 shadow-sm">
-                  <CheckCircle className="mr-2 h-4 w-4 text-blue-600" /> {t('complianceBadge')}
+                  <CheckCircle className="mr-2 h-4 w-4 text-amber-500" /> {t('complianceBadge')}
                 </div>
                 <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
                   {t('complianceTitle')}
@@ -255,28 +264,28 @@ export default async function HomePage() {
                     <span className="font-extrabold text-slate-900 text-xl">ISO</span>
                   </div>
                   <span className="text-xs font-bold text-slate-500 tracking-widest uppercase mb-2">9001:2015</span>
-                  <a href="#" className="text-[10px] text-blue-600 hover:underline">Verify Certification Credential</a>
+                  <a href="#" className="text-[10px] text-amber-600 hover:underline">Verify Certification Credential</a>
                 </div>
                 <div className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                   <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4 border border-slate-100 group-hover:border-blue-200 transition-colors">
                     <span className="font-extrabold text-slate-900 text-xl">OSHA</span>
                   </div>
                   <span className="text-xs font-bold text-slate-500 tracking-widest uppercase mb-2">Compliant</span>
-                  <a href="#" className="text-[10px] text-blue-600 hover:underline">Verify Certification Credential</a>
+                  <a href="#" className="text-[10px] text-amber-600 hover:underline">Verify Certification Credential</a>
                 </div>
                 <div className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                   <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4 border border-slate-100 group-hover:border-blue-200 transition-colors">
                     <span className="font-extrabold text-slate-900 text-xl">CE</span>
                   </div>
                   <span className="text-xs font-bold text-slate-500 tracking-widest uppercase mb-2">Certified</span>
-                  <a href="#" className="text-[10px] text-blue-600 hover:underline">Verify Certification Credential</a>
+                  <a href="#" className="text-[10px] text-amber-600 hover:underline">Verify Certification Credential</a>
                 </div>
                 <div className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                   <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4 border border-slate-100 group-hover:border-blue-200 transition-colors">
-                    <ShieldCheck className="h-8 w-8 text-blue-600" />
+                    <ShieldCheck className="h-8 w-8 text-amber-500" />
                   </div>
                   <span className="text-xs font-bold text-slate-500 tracking-widest uppercase mb-2">Verified</span>
-                  <a href="#" className="text-[10px] text-blue-600 hover:underline">Verify Certification Credential</a>
+                  <a href="#" className="text-[10px] text-amber-600 hover:underline">Verify Certification Credential</a>
                 </div>
               </div>
               

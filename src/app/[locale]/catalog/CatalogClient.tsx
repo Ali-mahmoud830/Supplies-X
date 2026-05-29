@@ -6,12 +6,15 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Search, Filter, Box } from 'lucide-react';
 import { Link } from '@/i18n/routing';
+import { useCartStore } from '@/lib/cart';
+import { Button } from '@/components/ui/button';
 
 export default function CatalogClient({ initialProducts, categories }: { initialProducts: any[], categories: any[] }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const locale = useLocale();
   const t = useTranslations('Catalog');
+  const cart = useCartStore();
 
   const filteredProducts = initialProducts.filter(p => {
     const matchesSearch = p.title_en.toLowerCase().includes(searchTerm.toLowerCase()) || 
@@ -108,18 +111,40 @@ export default function CatalogClient({ initialProducts, categories }: { initial
                     <h3 className="text-lg font-bold text-slate-900 mb-1 line-clamp-2 group-hover:text-blue-600 transition-colors">
                       {locale === 'en' ? product.title_en : product.title_ar}
                     </h3>
-                    <h4 className="text-sm font-medium text-slate-500 mb-4 line-clamp-1" dir={locale === 'en' ? 'rtl' : 'ltr'}>
+                    <h4 className="text-sm font-medium text-slate-500 mb-2 line-clamp-1" dir={locale === 'en' ? 'rtl' : 'ltr'}>
                       {locale === 'en' ? product.title_ar : product.title_en}
                     </h4>
                     
-                    <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <div className="flex flex-col gap-1 mb-4 text-xs font-medium text-slate-500">
+                      <div className="flex justify-between">
+                        <span>Brand:</span>
+                        <span className="text-slate-900 font-semibold">{product.brand || 'Generic'}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>MPN:</span>
+                        <span className="text-slate-900 font-mono">{product.mpn || 'N/A'}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
                       <span className="text-sm font-semibold text-blue-600 flex items-center opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                         {t('view')} <Box className="ml-1 h-4 w-4" />
                       </span>
+                      <Button 
+                        size="sm" 
+                        variant="secondary" 
+                        className="opacity-0 group-hover:opacity-100 transition-opacity bg-blue-50 text-blue-700 hover:bg-blue-100 z-10"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          cart.addItem(product, 1);
+                        }}
+                      >
+                        {t('addToQuote')}
+                      </Button>
                     </div>
                   </div>
-                </div>
-              </Link>
+                  </div>
+                </Link>
             ))}
           </div>
         )}

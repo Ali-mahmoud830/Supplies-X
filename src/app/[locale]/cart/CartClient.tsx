@@ -17,6 +17,7 @@ import { useTranslations, useLocale } from 'next-intl';
 const schema = z.object({
   client_name: z.string().min(1, 'Name is required'),
   company_name: z.string().optional(),
+  commercial_registration: z.string().optional(),
   email: z.string().email('Invalid email'),
   phone: z.string().min(6, 'Valid phone number is required'),
   attached_file_url: z.string().optional(),
@@ -38,7 +39,7 @@ export default function CartClient({ initialProducts = [] }: { initialProducts?:
 
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
-    defaultValues: { client_name: '', company_name: '', email: '', phone: '', attached_file_url: '' },
+    defaultValues: { client_name: '', company_name: '', commercial_registration: '', email: '', phone: '', attached_file_url: '' },
   });
 
   const onSubmit = async (values: z.infer<typeof schema>) => {
@@ -226,7 +227,8 @@ export default function CartClient({ initialProducts = [] }: { initialProducts?:
             {uploadState === 'idle' && (
               <>
                 <UploadCloud className="h-8 w-8 text-slate-400 mb-2" />
-                <p className="text-sm text-slate-600">{t('dropzoneDesc')}</p>
+                <p className="text-sm text-slate-600 font-medium">Upload your internal RFQ or Bill of Materials (BOM) Excel sheet</p>
+                <p className="text-xs text-slate-400 mt-1">{t('dropzoneDesc')}</p>
               </>
             )}
             {uploadState === 'uploading' && (
@@ -251,6 +253,9 @@ export default function CartClient({ initialProducts = [] }: { initialProducts?:
             )} />
             <FormField control={form.control} name="company_name" render={({ field }) => (
               <FormItem><FormLabel>{t('company')}</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+            )} />
+            <FormField control={form.control} name="commercial_registration" render={({ field }) => (
+              <FormItem><FormLabel>{t('cr_number')}</FormLabel><FormControl><Input {...field} placeholder="Optional" /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="email" render={({ field }) => (
               <FormItem><FormLabel>{t('email')}</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>

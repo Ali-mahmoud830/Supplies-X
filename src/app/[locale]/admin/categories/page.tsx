@@ -1,10 +1,18 @@
+export const dynamic = 'force-dynamic';
+
 import prisma from '@/lib/prisma';
 import CategoriesClient from './CategoriesClient';
 
 export default async function CategoriesPage() {
-  const categories = await prisma.category.findMany({
-    orderBy: { createdAt: 'desc' }
-  });
+  let categories: any[] = [];
+
+  try {
+    categories = await prisma.category.findMany({
+      orderBy: { createdAt: 'desc' }
+    });
+  } catch (error) {
+    console.error('Failed to fetch categories:', error);
+  }
 
   return (
     <div>

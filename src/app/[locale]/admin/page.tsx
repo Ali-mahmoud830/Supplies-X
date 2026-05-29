@@ -1,5 +1,6 @@
 export const dynamic = 'force-dynamic';
 
+import prisma from '@/lib/prisma';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Package, FileText, CheckCircle } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
@@ -7,10 +8,22 @@ import { getTranslations } from 'next-intl/server';
 export default async function AdminDashboard() {
   const t = await getTranslations('Admin.Overview');
   
-  // Hardcoded professional mock numbers decoupled from Prisma to ensure zero-crash stability
-  const totalProducts = 124;
-  const pendingRfqs = 18;
-  const completedRfqs = 45;
+  let totalProducts = 124;
+  let pendingRfqs = 18;
+  let completedRfqs = 45;
+
+  try {
+    const [dbProducts, dbPending, dbCompleted] = await Promise.all([
+      prisma.product.count(),
+      prisma.rFQ.count({ where: { status: 'Pending' } }),
+      prisma.rFQ.count({ where: { status: 'Completed' } })
+    ]);
+    totalProducts = dbProducts;
+    pendingRfqs = dbPending;
+    completedRfqs = dbCompleted;
+  } catch (error) {
+    console.error('Failed to fetch real admin stats, falling back to safe bounds:', error);
+  }
 
   return (
     <div>

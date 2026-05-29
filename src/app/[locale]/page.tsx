@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, Box, ShieldCheck, Globe, Download, Award, CheckCircle, PackageSearch, Layers } from 'lucide-react';
@@ -145,35 +146,41 @@ export default async function HomePage() {
                 <p className="text-slate-600 mb-8 leading-relaxed font-medium text-lg">
                   {t('complianceDesc')}
                 </p>
-                <Button variant="outline" className="border-slate-200 hover:bg-white text-slate-700 shadow-sm transition-all font-medium h-12 px-6">
-                  <Download className="mr-2 h-4 w-4" /> {t('downloadProfile')}
-                </Button>
+                <a href="/company-profile.pdf" download="Supplies_X_Corporate_Profile.pdf">
+                  <Button variant="outline" className="border-slate-200 hover:bg-white text-slate-700 shadow-sm transition-all font-medium h-12 px-6 w-full sm:w-auto">
+                    <Download className="mr-2 h-4 w-4" /> {t('downloadProfile')}
+                  </Button>
+                </a>
               </div>
               
               <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                  <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4 border border-slate-100">
+                <div className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4 border border-slate-100 group-hover:border-blue-200 transition-colors">
                     <span className="font-extrabold text-slate-900 text-xl">ISO</span>
                   </div>
-                  <span className="text-xs font-bold text-slate-500 tracking-widest uppercase">9001:2015</span>
+                  <span className="text-xs font-bold text-slate-500 tracking-widest uppercase mb-2">9001:2015</span>
+                  <a href="#" className="text-[10px] text-blue-600 hover:underline">Verify Certification Credential</a>
                 </div>
-                <div className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                  <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4 border border-slate-100">
+                <div className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4 border border-slate-100 group-hover:border-blue-200 transition-colors">
                     <span className="font-extrabold text-slate-900 text-xl">OSHA</span>
                   </div>
-                  <span className="text-xs font-bold text-slate-500 tracking-widest uppercase">Compliant</span>
+                  <span className="text-xs font-bold text-slate-500 tracking-widest uppercase mb-2">Compliant</span>
+                  <a href="#" className="text-[10px] text-blue-600 hover:underline">Verify Certification Credential</a>
                 </div>
-                <div className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                  <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4 border border-slate-100">
+                <div className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4 border border-slate-100 group-hover:border-blue-200 transition-colors">
                     <span className="font-extrabold text-slate-900 text-xl">CE</span>
                   </div>
-                  <span className="text-xs font-bold text-slate-500 tracking-widest uppercase">Certified</span>
+                  <span className="text-xs font-bold text-slate-500 tracking-widest uppercase mb-2">Certified</span>
+                  <a href="#" className="text-[10px] text-blue-600 hover:underline">Verify Certification Credential</a>
                 </div>
-                <div className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                  <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4 border border-slate-100">
+                <div className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4 border border-slate-100 group-hover:border-blue-200 transition-colors">
                     <ShieldCheck className="h-8 w-8 text-blue-600" />
                   </div>
-                  <span className="text-xs font-bold text-slate-500 tracking-widest uppercase">Verified</span>
+                  <span className="text-xs font-bold text-slate-500 tracking-widest uppercase mb-2">Verified</span>
+                  <a href="#" className="text-[10px] text-blue-600 hover:underline">Verify Certification Credential</a>
                 </div>
               </div>
               
@@ -182,12 +189,7 @@ export default async function HomePage() {
         </div>
       </main>
       
-      {/* Footer */}
-      <footer className="border-t border-slate-100 bg-white py-12 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 font-medium">
-          <p>&copy; {new Date().getFullYear()} {t('footerRights')}</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
+import { WhatsAppFAB } from '@/components/WhatsAppFAB';
 
 const inter = Inter({ subsets: ['latin'] });
 const cairo = Cairo({ subsets: ['arabic'] });
@@ -35,6 +36,7 @@ export default async function RootLayout({
       <body className={fontClass}>
         <NextIntlClientProvider messages={messages}>
           {children}
+          <WhatsAppFAB />
         </NextIntlClientProvider>
       </body>
     </html>

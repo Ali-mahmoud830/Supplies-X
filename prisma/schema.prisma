@@ -30,6 +30,7 @@ model Product {
   category       Category  @relation(fields: [categoryId], references: [id])
   brand          String?
   origin         String?
+  mpn            String?
   images         String[]
   specifications Json?
   rfqItems       RFQ_Item[]
@@ -48,6 +49,7 @@ model RFQ {
   id                String     @id @default(uuid())
   client_name       String
   company_name      String?
+  commercial_registration String?
   email             String
   phone             String
   status            RFQStatus  @default(Pending)

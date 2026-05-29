@@ -19,14 +19,13 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    const { client_name, company_name, email, phone, attached_file_url, items } = body;
+    const { client_name, company_name, commercial_registration, email, phone, attached_file_url, items } = await request.json();
 
-    // items should be an array of { productId: string, quantity: number }
     const rfq = await prisma.rFQ.create({
       data: {
         client_name,
         company_name,
+        commercial_registration,
         email,
         phone,
         attached_file_url,

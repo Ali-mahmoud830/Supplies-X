@@ -1,14 +1,27 @@
+export const dynamic = 'force-dynamic';
+
 import prisma from '@/lib/prisma';
 import ProductsClient from './ProductsClient';
 
 export default async function ProductsPage() {
-  const products = await prisma.product.findMany({
-    include: { category: true },
-    orderBy: { createdAt: 'desc' }
-  });
-  const categories = await prisma.category.findMany({
-    orderBy: { name_en: 'asc' }
-  });
+  let products: any[] = [];
+  let categories: any[] = [];
+
+  try {
+    const [p, c] = await Promise.all([
+      prisma.product.findMany({
+        include: { category: true },
+        orderBy: { createdAt: 'desc' }
+      }),
+      prisma.category.findMany({
+        orderBy: { name_en: 'asc' }
+      })
+    ]);
+    products = p;
+    categories = c;
+  } catch (error) {
+    console.error('Failed to fetch products/categories:', error);
+  }
 
   return (
     <div>

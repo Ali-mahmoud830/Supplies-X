@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, Box, ShieldCheck, Globe, Download, Award, CheckCircle, PackageSearch, Layers, Settings, ShieldAlert, Briefcase, TrendingDown, Target, Building2, Anchor, MapPin, Truck } from 'lucide-react';
 import prisma from '@/lib/prisma';
+import { HeroSlideshow } from '@/components/HeroSlideshow';
 
 export const dynamic = 'force-dynamic';
 
@@ -37,17 +38,8 @@ export default async function HomePage() {
       <main className="flex-1 relative z-10 flex flex-col">
         {/* CINEMATIC INDUSTRIAL HERO SECTION */}
         <div className="w-full relative overflow-hidden bg-slate-950 flex flex-col items-center justify-center min-h-[85vh] sm:min-h-[80vh]">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            <img 
-              src={heroBg} 
-              alt="Industrial Warehouse Background" 
-              className="w-full h-full object-cover" 
-            />
-            {/* Dark Overlay for OmniCare contrast */}
-            <div className="absolute inset-0 bg-slate-950/70 mix-blend-multiply"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-          </div>
+          {/* Dynamic Cinematic Background Slideshow */}
+          <HeroSlideshow />
           
           {/* Content */}
           <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center">

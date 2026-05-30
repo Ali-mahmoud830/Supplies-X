@@ -32,10 +32,45 @@ model Product {
   origin         String?
   mpn            String?
   images         String[]
+  isActive       Boolean   @default(true)
   specifications Json?
   rfqItems       RFQ_Item[]
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
+}
+
+model Service {
+  id        String   @id @default(uuid())
+  titleEn   String
+  titleAr   String
+  descEn    String
+  descAr    String
+  icon      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Project {
+  id         String   @id @default(uuid())
+  nameEn     String
+  nameAr     String
+  locationEn String
+  locationAr String
+  metricsEn  String?
+  metricsAr  String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model HeroContent {
+  id         String   @id @default(uuid())
+  titleEn    String
+  titleAr    String
+  subEn      String
+  subAr      String
+  bgImageUrl String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
 enum RFQStatus {

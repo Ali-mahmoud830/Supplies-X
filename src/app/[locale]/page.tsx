@@ -1,12 +1,30 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, getLocale } from 'next-intl/server';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, Box, ShieldCheck, Globe, Download, Award, CheckCircle, PackageSearch, Layers, Settings, ShieldAlert, Briefcase, TrendingDown, Target, Building2, Anchor, MapPin, Truck } from 'lucide-react';
+import { prisma } from '@/lib/prisma';
 
 export default async function HomePage() {
   const t = await getTranslations('HomePage');
+  const locale = await getLocale();
+  
+  let dbHero = null;
+  let dbServices: any[] = [];
+  let dbProjects: any[] = [];
+  
+  try {
+    dbHero = await prisma.heroContent.findFirst();
+    dbServices = await prisma.service.findMany({ orderBy: { createdAt: 'asc' } });
+    dbProjects = await prisma.project.findMany({ orderBy: { createdAt: 'desc' }, take: 4 });
+  } catch(e) {
+    console.error('DB Fetch Error', e);
+  }
+
+  const titleText = locale === 'ar' ? (dbHero?.titleAr || t('title')) : (dbHero?.titleEn || t('title'));
+  const subText = locale === 'ar' ? (dbHero?.subAr || t('description')) : (dbHero?.subEn || t('description'));
+  const heroBg = dbHero?.bgImageUrl || "https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?q=80&w=2000&auto=format&fit=crop";
 
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col relative overflow-hidden">
@@ -18,7 +36,7 @@ export default async function HomePage() {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?q=80&w=2000&auto=format&fit=crop" 
+              src={heroBg} 
               alt="Industrial Warehouse Background" 
               className="w-full h-full object-cover" 
             />
@@ -35,13 +53,11 @@ export default async function HomePage() {
             </div>
             
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight mb-6">
-              {t('title').split('B2B')[0]}
-              <span className="text-amber-400 block sm:inline">B2B </span>
-              {t('title').split('B2B')[1]}
+              {titleText}
             </h1>
             
             <p className="text-xl text-slate-300 leading-relaxed font-medium max-w-3xl mb-10">
-              {t('description')}
+              {subText}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">

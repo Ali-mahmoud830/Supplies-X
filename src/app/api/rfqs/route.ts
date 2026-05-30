@@ -1,45 +1,36 @@
 import { NextResponse } from 'next/server';
-import prisma from '@/lib/prisma';
+import { prisma } from '@/lib/prisma';
 
 export async function GET() {
   try {
     const rfqs = await prisma.rFQ.findMany({
-      orderBy: { createdAt: 'desc' },
-      include: {
-        items: {
-          include: { product: true }
-        }
-      }
+      include: { items: { include: { product: true } } },
+      orderBy: { createdAt: 'desc' }
     });
     return NextResponse.json(rfqs);
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to fetch RFQs' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch rfqs' }, { status: 500 });
   }
 }
 
 export async function POST(request: Request) {
   try {
-    const { client_name, company_name, commercial_registration, email, phone, attached_file_url, items } = await request.json();
-
+    const body = await request.json();
+    const { items, ...rfqData } = body;
+    
     const rfq = await prisma.rFQ.create({
       data: {
-        client_name,
-        company_name,
-        commercial_registration,
-        email,
-        phone,
-        attached_file_url,
+        ...rfqData,
         items: {
-          create: items.map((item: any) => ({
+          create: items?.map((item: any) => ({
             productId: item.productId,
-            quantity: item.quantity
-          }))
+            quantity: item.quantity || 1
+          })) || []
         }
-      },
-      include: { items: true }
+      }
     });
-    return NextResponse.json(rfq, { status: 201 });
+    return NextResponse.json(rfq);
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to submit RFQ' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to create rfq' }, { status: 500 });
   }
 }

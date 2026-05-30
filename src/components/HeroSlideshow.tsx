@@ -8,7 +8,11 @@ const slides = [
   // Slide 2: Commercial Real Estate & Infrastructure (Modern glass skyscrapers)
   "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80",
   // Slide 3: Heavy Logistics & Supply Chain (Global shipping & logistics)
-  "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80"
+  "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80",
+  // Slide 4: Corporate Office & Tech Supplies (Luxury executive spaces)
+  "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80",
+  // Slide 5: Machinery & Heavy Assets (Automated manufacturing)
+  "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=1920&q=80"
 ];
 
 export function HeroSlideshow() {

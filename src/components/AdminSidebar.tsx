@@ -1,34 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, usePathname } from '@/i18n/routing';
 import { LayoutDashboard, Package, Tags, FileText, Settings, Image, Briefcase, Map, Menu, X } from 'lucide-react';
-import { useTranslations, useLocale } from 'next-intl';
 
 export function AdminSidebar() {
-  const t = useTranslations('AdminSidebar');
   const pathname = usePathname();
-  const locale = useLocale();
-  const isRtl = locale === 'ar';
   const [isOpen, setIsOpen] = useState(false);
 
-  // Fallback translation if key missing
-  const getTranslation = (key: string, fallback: string) => {
-    try {
-      return t(key);
-    } catch {
-      return fallback;
-    }
-  };
-
   const menu = [
-    { name: getTranslation('dashboard', 'Dashboard'), path: '/admin', icon: LayoutDashboard },
+    { name: 'Dashboard', path: '/admin', icon: LayoutDashboard },
     { name: 'Hero Settings', path: '/admin/hero', icon: Image },
     { name: 'Services', path: '/admin/services', icon: Briefcase },
     { name: 'Portfolio', path: '/admin/portfolio', icon: Map },
-    { name: getTranslation('categories', 'Categories'), path: '/admin/categories', icon: Tags },
-    { name: getTranslation('products', 'Products'), path: '/admin/products', icon: Package },
-    { name: getTranslation('rfqs', 'RFQs'), path: '/admin/rfqs', icon: FileText },
+    { name: 'Categories', path: '/admin/categories', icon: Tags },
+    { name: 'Products', path: '/admin/products', icon: Package },
+    { name: 'RFQs', path: '/admin/rfqs', icon: FileText },
     { name: 'Site Settings', path: '/admin/settings', icon: Settings },
   ];
 
@@ -48,14 +35,13 @@ export function AdminSidebar() {
         />
       )}
 
-      <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-slate-900 text-white min-h-screen p-4 shadow-xl flex flex-col transition-transform duration-300 ease-in-out md:relative md:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-slate-900 text-white min-h-screen p-4 shadow-xl flex flex-col transition-transform duration-300 ease-in-out md:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="mb-8 flex items-center gap-3 px-2 mt-4 md:mt-0">
           <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center font-bold">BX</div>
           <h2 className="text-xl font-bold tracking-wide">Supplies X</h2>
         </div>
         <nav className="flex-1 space-y-2 overflow-y-auto">
           {menu.map((item) => {
-            // Strict exact match for /admin or path start for others to fix highlighting issues
             const isActive = item.path === '/admin' ? pathname === '/admin' : pathname.startsWith(item.path);
             const Icon = item.icon;
             return (

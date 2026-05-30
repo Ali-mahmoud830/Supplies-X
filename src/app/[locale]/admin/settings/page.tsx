@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
 import SettingsClient from './SettingsClient';
 
 export default async function SettingsAdminPage() {

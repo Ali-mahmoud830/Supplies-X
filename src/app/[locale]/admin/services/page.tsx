@@ -1,8 +1,8 @@
-import { prisma } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
 import ServicesClient from './ServicesClient';
 
 export default async function ServicesAdminPage() {
-  let services = [];
+  let services: any[] = [];
   try {
     services = await prisma.service.findMany({ orderBy: { createdAt: 'asc' } });
   } catch(e) {}

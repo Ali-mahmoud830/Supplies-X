@@ -1,10 +1,10 @@
 import { Link } from '@/i18n/routing';
-import { useTranslations, getLocale } from 'next-intl/server';
+import { getTranslations, getLocale } from 'next-intl/server';
 import { MapPin, Phone, Mail, MessageCircle, FileText, Globe } from 'lucide-react';
-import { prisma } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
 
 export async function Footer() {
-  const t = await useTranslations('Footer');
+  const t = await getTranslations('Footer');
   const locale = await getLocale();
   let settings = null;
   

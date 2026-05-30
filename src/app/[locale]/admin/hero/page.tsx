@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
 import HeroClient from './HeroClient';
 
 export default async function HeroAdminPage() {

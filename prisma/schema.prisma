@@ -104,3 +104,18 @@ model RFQ_Item {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Settings {
+  id             String   @id @default(uuid())
+  statsProducts  String   @default("50k+")
+  statsBrands    String   @default("200+")
+  statsCountries String   @default("15+")
+  statsSupport   String   @default("24/7")
+  addressEn      String   @default("Cairo, Egypt")
+  addressAr      String   @default("القاهرة، مصر")
+  phone          String   @default("+20 123 456 7890")
+  email          String   @default("info@suppliesx.com")
+  taxId          String   @default("123-456-789")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}

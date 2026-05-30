@@ -1,9 +1,21 @@
 import { Link } from '@/i18n/routing';
-import { useTranslations } from 'next-intl';
+import { useTranslations, getLocale } from 'next-intl/server';
 import { MapPin, Phone, Mail, MessageCircle, FileText, Globe } from 'lucide-react';
+import { prisma } from '@/lib/prisma';
 
-export function Footer() {
-  const t = useTranslations('Footer');
+export async function Footer() {
+  const t = await useTranslations('Footer');
+  const locale = await getLocale();
+  let settings = null;
+  
+  try {
+    settings = await prisma.settings.findFirst();
+  } catch(e) {}
+
+  const address = locale === 'ar' ? (settings?.addressAr || 'القاهرة، مصر') : (settings?.addressEn || 'Cairo, Egypt');
+  const phone = settings?.phone || '+20 123 456 7890';
+  const email = settings?.email || 'info@suppliesx.com';
+  const taxId = settings?.taxId || '123-456-789';
 
   return (
     <footer className="bg-slate-950 text-slate-300 py-16 border-t border-slate-800 relative z-10">
@@ -60,7 +72,7 @@ export function Footer() {
                 <FileText className="h-5 w-5 text-blue-500 shrink-0" />
                 <div>
                   <div className="text-slate-200">Tax ID</div>
-                  <div className="text-slate-500 text-xs mt-0.5">XXX-XXX-XXX</div>
+                  <div className="text-slate-500 text-xs mt-0.5">{taxId}</div>
                 </div>
               </li>
             </ul>
@@ -72,18 +84,15 @@ export function Footer() {
             <ul className="space-y-4 text-sm font-medium">
               <li className="flex gap-3 items-start">
                 <MapPin className="h-5 w-5 text-blue-500 shrink-0" />
-                <span>
-                  Business District, Building 14<br />
-                  Cairo, Egypt
-                </span>
+                <span>{address}</span>
               </li>
               <li className="flex gap-3 items-center">
                 <Phone className="h-5 w-5 text-blue-500 shrink-0" />
-                <span>+20 2 1234 5678</span>
+                <span dir="ltr">{phone}</span>
               </li>
               <li className="flex gap-3 items-center">
                 <Mail className="h-5 w-5 text-blue-500 shrink-0" />
-                <span>procurement@supplies-x.com</span>
+                <span>{email}</span>
               </li>
             </ul>
           </div>

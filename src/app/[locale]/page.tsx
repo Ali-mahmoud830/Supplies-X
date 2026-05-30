@@ -6,6 +6,8 @@ import { Link } from '@/i18n/routing';
 import { ArrowRight, Box, ShieldCheck, Globe, Download, Award, CheckCircle, PackageSearch, Layers, Settings, ShieldAlert, Briefcase, TrendingDown, Target, Building2, Anchor, MapPin, Truck } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
 
+export const dynamic = 'force-dynamic';
+
 export default async function HomePage() {
   const t = await getTranslations('HomePage');
   const locale = await getLocale();
@@ -13,11 +15,13 @@ export default async function HomePage() {
   let dbHero = null;
   let dbServices: any[] = [];
   let dbProjects: any[] = [];
+  let dbSettings = null;
   
   try {
     dbHero = await prisma.heroContent.findFirst();
     dbServices = await prisma.service.findMany({ orderBy: { createdAt: 'asc' } });
     dbProjects = await prisma.project.findMany({ orderBy: { createdAt: 'desc' }, take: 4 });
+    dbSettings = await prisma.settings.findFirst();
   } catch(e) {
     console.error('DB Fetch Error', e);
   }
@@ -104,19 +108,19 @@ export default async function HomePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-slate-100">
               <div className="flex flex-col px-4 text-center sm:text-left">
-                <span className="text-3xl font-extrabold text-slate-900 tracking-tight">50k+</span>
+                <span className="text-3xl font-extrabold text-slate-900 tracking-tight">{dbSettings?.statsProducts || '50k+'}</span>
                 <span className="text-slate-500 text-sm font-medium mt-1">{t('stats.products')}</span>
               </div>
               <div className="flex flex-col px-4 text-center sm:text-left">
-                <span className="text-3xl font-extrabold text-slate-900 tracking-tight">200+</span>
+                <span className="text-3xl font-extrabold text-slate-900 tracking-tight">{dbSettings?.statsBrands || '200+'}</span>
                 <span className="text-slate-500 text-sm font-medium mt-1">{t('stats.brands')}</span>
               </div>
               <div className="flex flex-col px-4 text-center sm:text-left">
-                <span className="text-3xl font-extrabold text-slate-900 tracking-tight">15+</span>
+                <span className="text-3xl font-extrabold text-slate-900 tracking-tight">{dbSettings?.statsCountries || '15+'}</span>
                 <span className="text-slate-500 text-sm font-medium mt-1">{t('stats.countries')}</span>
               </div>
               <div className="flex flex-col px-4 text-center sm:text-left">
-                <span className="text-3xl font-extrabold text-slate-900 tracking-tight">24/7</span>
+                <span className="text-3xl font-extrabold text-slate-900 tracking-tight">{dbSettings?.statsSupport || '24/7'}</span>
                 <span className="text-slate-500 text-sm font-medium mt-1">{t('stats.support')}</span>
               </div>
             </div>

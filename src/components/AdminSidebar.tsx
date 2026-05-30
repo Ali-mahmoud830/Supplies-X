@@ -8,6 +8,11 @@ export function AdminSidebar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
+  // Do not render sidebar on login page
+  if (pathname.endsWith('/admin/login')) {
+    return null;
+  }
+
   const menu = [
     { name: 'Dashboard', path: '/admin', icon: LayoutDashboard },
     { name: 'Hero Settings', path: '/admin/hero', icon: Image },

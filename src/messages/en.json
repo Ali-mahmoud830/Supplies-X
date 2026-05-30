@@ -1,5 +1,10 @@
 {
   "HomePage": {
+    "trustBar": {
+      "certified": "Certified & Vetted Equipment",
+      "availability": "24/7 Supply Chain Availability",
+      "quality": "Institutional Quality Assurance"
+    },
     "title": "Premium B2B General Supplies Platform",
     "description": "Your trusted enterprise partner for certified industrial tools, safety gear, and corporate procurement contracts.",
     "browse": "Browse Catalog",

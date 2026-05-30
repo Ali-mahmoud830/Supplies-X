@@ -13,76 +13,72 @@ export default async function HomePage() {
       <Navbar />
       
       <main className="flex-1 relative z-10 flex flex-col">
-        {/* COMPREHENSIVE HERO SECTION RECONSTRUCTION (The 60/40 Split Grid) */}
-        <div className="w-full bg-slate-50 border-b border-slate-100 relative overflow-hidden">
+        {/* CINEMATIC INDUSTRIAL HERO SECTION */}
+        <div className="w-full relative overflow-hidden bg-slate-950 flex flex-col items-center justify-center min-h-[85vh] sm:min-h-[80vh]">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?q=80&w=2000&auto=format&fit=crop" 
+              alt="Industrial Warehouse Background" 
+              className="w-full h-full object-cover" 
+            />
+            {/* Dark Overlay for OmniCare contrast */}
+            <div className="absolute inset-0 bg-slate-950/70 mix-blend-multiply"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+          </div>
           
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-              
-              {/* Column 1 (Left Side - 6 cols) */}
-              <div className="lg:col-span-6 space-y-8">
-                <div className="inline-flex items-center rounded-full border border-slate-200 bg-white/80 backdrop-blur-sm px-4 py-1.5 text-sm font-semibold text-slate-700 shadow-sm">
-                  <ShieldCheck className="me-2 h-4 w-4 text-amber-500" />
-                  {t('trusted')}
-                </div>
-                
-                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-none">
-                  {t('title').split('B2B')[0]}
-                  <span className="text-amber-500 block sm:inline mt-2 sm:mt-0">B2B </span>
-                  {t('title').split('B2B')[1]}
-                </h1>
-                
-                <p className="text-xl text-slate-600 leading-relaxed font-medium max-w-2xl">
-                  {t('description')}
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <Link href="/catalog">
-                    <Button size="lg" className="w-full sm:w-auto h-14 px-8 bg-slate-900 hover:bg-slate-800 text-white font-medium shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
-                      {t('browse')} <ArrowRight className="ms-2 h-5 w-5" />
-                    </Button>
-                  </Link>
-                  <Link href="/cart">
-                    <Button size="lg" variant="outline" className="w-full sm:w-auto h-14 px-8 border border-slate-300 hover:bg-slate-100 text-slate-900 font-bold bg-white transition-all duration-300 hover:shadow-md hover:scale-[1.02]">
-                      {t('request')}
-                    </Button>
-                  </Link>
-                </div>
+          {/* Content */}
+          <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center">
+            <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-4 py-1.5 text-sm font-semibold text-white shadow-sm mb-8">
+              <ShieldCheck className="me-2 h-4 w-4 text-amber-400" />
+              {t('trusted')}
+            </div>
+            
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight mb-6">
+              {t('title').split('B2B')[0]}
+              <span className="text-amber-400 block sm:inline">B2B </span>
+              {t('title').split('B2B')[1]}
+            </h1>
+            
+            <p className="text-xl text-slate-300 leading-relaxed font-medium max-w-3xl mb-10">
+              {t('description')}
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <Link href="/catalog" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full h-14 px-8 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                  {t('browse')} <ArrowRight className="ms-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/cart" className="w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="w-full h-14 px-8 border border-white/40 bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white font-bold transition-all duration-300 hover:scale-[1.02]">
+                  {t('request')}
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* THE FLOATING TRUST BAR (OmniCare Style) */}
+        <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full -mt-10 mb-10">
+          <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 bg-amber-50 rounded-full flex items-center justify-center shrink-0">
+                <ShieldCheck className="h-5 w-5 text-amber-500" />
               </div>
-              
-              {/* Column 2 (Right Side - 6 cols) Heavy Industrial Imagery */}
-              <div className="lg:col-span-6 relative lg:ms-8 mt-12 lg:mt-0 h-[300px] sm:h-[500px]">
-                {/* Floating Badge (Visible on all sizes, adjusted for mobile) */}
-                <div className="absolute -top-6 right-2 sm:right-0 lg:-right-6 z-30 bg-white/95 backdrop-blur-md border border-slate-100 shadow-2xl rounded-2xl p-3 sm:p-4 flex items-center gap-3 hover:-translate-y-1 transition-transform duration-300">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-amber-50 rounded-full flex items-center justify-center text-amber-600">
-                    <Truck className="h-5 w-5 sm:h-6 sm:w-6" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] sm:text-xs text-slate-500 font-bold uppercase tracking-widest">{t('deliveryBadgeSub', { defaultMessage: 'Logistics' })}</p>
-                    <p className="text-xs sm:text-base font-extrabold text-slate-900">{t('deliveryBadgeTitle', { defaultMessage: 'Next-Day Factory Delivery' })}</p>
-                  </div>
-                </div>
-
-                {/* MOBILE ONLY: Single Full-Width Banner */}
-                <div className="block md:hidden absolute inset-0 bg-slate-200 rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-10 group">
-                  <img src="https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?q=80&w=1200&auto=format&fit=crop" alt="Industrial Warehouse" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-slate-900/10 mix-blend-multiply"></div>
-                </div>
-
-                {/* DESKTOP ONLY: Overlapping Composition */}
-                <div className="hidden md:block">
-                  {/* Base Image */}
-                  <div className="absolute inset-0 right-12 bottom-12 bg-slate-200 rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-10 group">
-                    <img src="https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?q=80&w=1200&auto=format&fit=crop" alt="Industrial Warehouse" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-slate-900/10 mix-blend-multiply"></div>
-                  </div>
-
-                  {/* Overlay Image */}
-                  <div className="absolute -bottom-6 -left-6 w-2/3 h-2/3 bg-slate-200 rounded-3xl overflow-hidden shadow-2xl border-8 border-white z-20 group">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop" alt="Premium Safety Gear" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  </div>
-                </div>
+              <span className="font-bold text-slate-900 text-sm sm:text-base">{t('trustBar.certified', { defaultMessage: 'Certified & Vetted Equipment' })}</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 bg-amber-50 rounded-full flex items-center justify-center shrink-0">
+                <Truck className="h-5 w-5 text-amber-500" />
               </div>
+              <span className="font-bold text-slate-900 text-sm sm:text-base">{t('trustBar.availability', { defaultMessage: '24/7 Supply Chain Availability' })}</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 bg-amber-50 rounded-full flex items-center justify-center shrink-0">
+                <Award className="h-5 w-5 text-amber-500" />
+              </div>
+              <span className="font-bold text-slate-900 text-sm sm:text-base">{t('trustBar.quality', { defaultMessage: 'Institutional Quality Assurance' })}</span>
             </div>
           </div>
         </div>
@@ -112,7 +108,7 @@ export default async function HomePage() {
         </div>
 
         {/* COMPREHENSIVE SERVICES SECTION */}
-        <div className="w-full bg-white py-16 md:py-28 border-b border-slate-100">
+        <div className="w-full bg-white py-24 md:py-32 border-b border-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">{t('servicesTitle', { defaultMessage: 'Comprehensive Supply Solutions' })}</h2>
@@ -166,7 +162,7 @@ export default async function HomePage() {
         </div>
 
         {/* PORTFOLIO & PROJECT SUCCESS SECTION */}
-        <div className="w-full bg-slate-900 text-white py-16 md:py-28 relative overflow-hidden">
+        <div className="w-full bg-slate-900 text-white py-24 md:py-32 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(245,158,11,0.10),rgba(255,255,255,0))]"></div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -237,7 +233,7 @@ export default async function HomePage() {
             </div>
           </div>
         </div>
-        <div className="bg-slate-50 py-16 md:py-28 flex-1">
+        <div className="bg-slate-50 py-24 md:py-32 flex-1">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
               

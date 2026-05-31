@@ -3,9 +3,9 @@
 import { MessageCircle } from 'lucide-react';
 import { useLocale } from 'next-intl';
 
-export function WhatsAppFAB() {
+export function WhatsAppFAB({ phone }: { phone: string }) {
   const locale = useLocale();
-  const phoneNumber = '1234567890'; // Replace with actual WhatsApp number
+  const phoneNumber = phone.replace(/\D/g, ''); // Ensure it's digits only for wa.me URL
   const messageEn = 'Hello, I am interested in exploring your enterprise procurement and supply options.';
   const messageAr = 'مرحباً، أود الاستفسار عن خيارات التوريد والمشتريات لشركتي.';
   

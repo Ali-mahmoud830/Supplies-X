@@ -6,6 +6,8 @@ import { getMessages } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 import { WhatsAppFAB } from '@/components/WhatsAppFAB';
+import { Toaster } from 'react-hot-toast';
+import prisma from '@/lib/prisma';
 
 const inter = Inter({ subsets: ['latin'] });
 const cairo = Cairo({ subsets: ['arabic'] });
@@ -28,6 +30,8 @@ export default async function RootLayout({
   }
 
   const messages = await getMessages();
+  const dbSettings = await prisma.settings.findFirst();
+  const phone = dbSettings?.phone || '1234567890';
   const dir = locale === 'ar' ? 'rtl' : 'ltr';
   const fontClass = locale === 'ar' ? cairo.className : inter.className;
 
@@ -36,7 +40,23 @@ export default async function RootLayout({
       <body className={fontClass}>
         <NextIntlClientProvider messages={messages}>
           {children}
-          <WhatsAppFAB />
+          <Toaster 
+            position="top-right" 
+            toastOptions={{
+              style: {
+                background: '#0f172a', // slate-900
+                color: '#fff',
+                border: '1px solid #1e293b' // slate-800
+              },
+              success: {
+                iconTheme: {
+                  primary: '#f59e0b', // amber-500
+                  secondary: '#fff',
+                },
+              },
+            }} 
+          />
+          <WhatsAppFAB phone={phone} />
         </NextIntlClientProvider>
       </body>
     </html>

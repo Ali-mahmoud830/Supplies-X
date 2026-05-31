@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -10,13 +11,13 @@ export default function HeroClient({ initialData }: { initialData: any }) {
   const router = useRouter();
 
   const save = async () => {
-    await fetch('/api/hero', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    });
-    router.refresh();
-    alert('Hero updated successfully!');
+    const res = await fetch('/api/hero', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) });
+    if (res.ok) {
+      toast.success('✓ Hero synchronized successfully');
+      router.refresh();
+    } else {
+      toast.error('Failed to sync hero content');
+    }
   };
 
   return (

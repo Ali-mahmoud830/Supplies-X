@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -20,13 +21,13 @@ export default function SettingsClient({ initialData }: { initialData: any }) {
   const router = useRouter();
 
   const save = async () => {
-    await fetch('/api/settings', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    });
+    const res = await fetch('/api/settings', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) });
+    if (res.ok) {
+      toast.success('✓ Settings synchronized successfully');
+    } else {
+      toast.error('Failed to sync settings');
+    }
     router.refresh();
-    alert('Settings updated successfully!');
   };
 
   return (

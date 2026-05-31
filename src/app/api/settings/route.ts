@@ -16,8 +16,9 @@ export async function GET() {
       });
     }
     return NextResponse.json(settings);
-  } catch (error) {
-    return NextResponse.json({ error: 'Failed to fetch settings' }, { status: 500 });
+  } catch (error: any) {
+    console.error("Database fetch/create failed:", error);
+    return NextResponse.json({ error: 'Failed to fetch settings', details: error.message }, { status: 500 });
   }
 }
 
@@ -35,8 +36,8 @@ export async function PUT(request: Request) {
 
     revalidatePath('/');
     return NextResponse.json(settings);
-  } catch (error) {
+  } catch (error: any) {
     console.error("Database upsert failed:", error);
-    return NextResponse.json({ error: 'Failed to update settings' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to update settings', details: error.message }, { status: 500 });
   }
 }

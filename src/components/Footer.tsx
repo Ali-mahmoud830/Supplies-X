@@ -10,11 +10,13 @@ export async function Footer() {
   
   try {
     settings = await prisma.settings.findFirst();
-  } catch(e) {}
+  } catch(e) {
+    console.error('DB Fetch Error in Footer:', e);
+  }
 
   const address = locale === 'ar' ? (settings?.addressAr || 'القاهرة، مصر') : (settings?.addressEn || 'Cairo, Egypt');
-  const phone = settings?.phone || '+20 123 456 7890';
-  const email = settings?.email || 'info@suppliesx.com';
+  const phone = settings?.phone || '+201000000000';
+  const email = settings?.email || 'contact@supplies-x.com';
   const taxId = settings?.taxId || '123-456-789';
 
   return (

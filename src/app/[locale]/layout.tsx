@@ -30,8 +30,13 @@ export default async function RootLayout({
   }
 
   const messages = await getMessages();
-  const dbSettings = await prisma.settings.findFirst();
-  const phone = dbSettings?.phone || '1234567890';
+  let dbSettings = null;
+  try {
+    dbSettings = await prisma.settings.findFirst();
+  } catch (error) {
+    console.error('Failed to fetch settings in layout:', error);
+  }
+  const phone = dbSettings?.phone || '+201000000000';
   const dir = locale === 'ar' ? 'rtl' : 'ltr';
   const fontClass = locale === 'ar' ? cairo.className : inter.className;
 

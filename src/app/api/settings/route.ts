@@ -4,8 +4,20 @@ import { revalidatePath } from 'next/cache';
 
 export async function GET() {
   try {
-    const settings = await prisma.settings.findFirst();
-    return NextResponse.json(settings || {});
+    let settings = await prisma.settings.findFirst();
+    if (!settings) {
+      settings = await prisma.settings.create({
+        data: {
+          phone: "+201000000000",
+          email: "contact@supplies-x.com",
+          addressEn: "Cairo, Egypt",
+          addressAr: "القاهرة، مصر",
+          facebook: "",
+          linkedin: ""
+        }
+      });
+    }
+    return NextResponse.json(settings);
   } catch (error) {
     return NextResponse.json({ error: 'Failed to fetch settings' }, { status: 500 });
   }

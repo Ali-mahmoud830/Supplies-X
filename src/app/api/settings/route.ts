@@ -25,20 +25,18 @@ export async function PUT(request: Request) {
   try {
     const body = await request.json();
     const existing = await prisma.settings.findFirst();
-    let settings;
-    if (existing) {
-      settings = await prisma.settings.update({
-        where: { id: existing.id },
-        data: body,
-      });
-    } else {
-      settings = await prisma.settings.create({
-        data: body,
-      });
-    }
+    const targetId = existing?.id || 'singleton_settings';
+
+    const settings = await prisma.settings.upsert({
+      where: { id: targetId },
+      update: body,
+      create: { id: targetId, ...body },
+    });
+
     revalidatePath('/');
     return NextResponse.json(settings);
   } catch (error) {
+    console.error("Database upsert failed:", error);
     return NextResponse.json({ error: 'Failed to update settings' }, { status: 500 });
   }
 }

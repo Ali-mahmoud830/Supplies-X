@@ -15,20 +15,18 @@ export async function PUT(request: Request) {
   try {
     const body = await request.json();
     const existing = await prisma.heroContent.findFirst();
-    let hero;
-    if (existing) {
-      hero = await prisma.heroContent.update({
-        where: { id: existing.id },
-        data: body,
-      });
-    } else {
-      hero = await prisma.heroContent.create({
-        data: body,
-      });
-    }
+    const targetId = existing?.id || 'singleton_hero';
+
+    const hero = await prisma.heroContent.upsert({
+      where: { id: targetId },
+      update: body,
+      create: { id: targetId, ...body },
+    });
+
     revalidatePath('/');
     return NextResponse.json(hero);
   } catch (error) {
+    console.error("Database upsert failed:", error);
     return NextResponse.json({ error: 'Failed to update hero content' }, { status: 500 });
   }
 }

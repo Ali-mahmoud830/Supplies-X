@@ -13,9 +13,7 @@ export default async function SettingsAdminPage() {
     phone: '+201000000000',
     email: 'contact@supplies-x.com',
     addressEn: 'Cairo, Egypt',
-    addressAr: 'القاهرة، مصر',
-    facebook: '',
-    linkedin: ''
+    addressAr: 'القاهرة، مصر'
   };
 
   return (

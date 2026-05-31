@@ -11,9 +11,7 @@ export async function GET() {
           phone: "+201000000000",
           email: "contact@supplies-x.com",
           addressEn: "Cairo, Egypt",
-          addressAr: "القاهرة، مصر",
-          facebook: "",
-          linkedin: ""
+          addressAr: "القاهرة، مصر"
         }
       });
     }
